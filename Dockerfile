@@ -1,4 +1,4 @@
-FROM node:latest-alpine
+FROM node:latest
 USER node
 WORKDIR /var/app
 COPY app/package.json .
