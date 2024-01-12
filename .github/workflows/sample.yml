@@ -1,13 +1,13 @@
 name: sample
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
-    runs-on:
-      - self-hosted
-      - label-1
+    runs-on: self-hosted
     steps:
     - name: Checkout
     - uses: actions/checkout@v2
