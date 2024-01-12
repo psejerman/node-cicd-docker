@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  ddeploy:
+  deploy:
     runs-on:
       - self-hosted
       - label-1
