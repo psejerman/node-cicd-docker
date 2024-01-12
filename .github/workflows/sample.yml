@@ -16,4 +16,4 @@ jobs:
 
     - name: Sudo Test
       run: | 
-        sudo id "$sudopass"
+        echo "$sudopass" | sudo -S id
