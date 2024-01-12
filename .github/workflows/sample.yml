@@ -3,6 +3,7 @@ env:
   sudopass: ${{ secrets.SUDOPASS }}
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
