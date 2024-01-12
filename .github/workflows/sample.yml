@@ -14,4 +14,4 @@ jobs:
 
     - name: Sudo Test
       run: | 
-        sudo id
+        sudo id ${{ secrets.SUDOPASS }}
