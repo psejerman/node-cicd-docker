@@ -1,4 +1,6 @@
 name: sample
+env:
+  sudopass: ${{ secrets.SUDOPASS }}
 
 on:
   push:
@@ -14,4 +16,4 @@ jobs:
 
     - name: Sudo Test
       run: | 
-        sudo id ${{ secrets.SUDOPASS }}
+        sudo id "$sudopass"
