@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Compose app with docker
-    - run: |
+      run: |
         export DB_PASS="$db_pass"
         export DB_USER="$db_user"
         echo $DB_PASS
