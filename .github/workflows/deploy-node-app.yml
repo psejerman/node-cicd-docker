@@ -22,5 +22,5 @@ jobs:
       run: |
         export DB_PASS="$db_pass"
         export DB_USER="$db_user"
-        echo $DB_PASS
+        echo $DB_PASS > /opt/projects/cred
        
