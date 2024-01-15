@@ -17,4 +17,4 @@ jobs:
 
     - name: Sudo Compose
       run: | 
-        echo "$sudopass" | sudo -S docker-compose /opt/project/node-cicd-docker/node-cicd-docker
+        echo "$sudopass" | sudo -S docker-compose -f /opt/project/node-cicd-docker/node-cicd-docker/node-compose.yml up --detach
