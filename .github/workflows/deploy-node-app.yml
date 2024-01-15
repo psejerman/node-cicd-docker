@@ -1,6 +1,9 @@
 name: sample
 env:
-  sudopass: ${{ secrets.SUDOPASS }}
+  SUDO_PASS: ${{ secrets.SUDOPASS }}
+  DB_PASS: ${{ secrets.DB_PASSWD }}
+  DB_USER: ${{ secrets.DB_USERNAME }}
+
 
 on:
   workflow_dispatch:
@@ -12,9 +15,9 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-    - name: Checkout
+    - name: Checkout the repository
       uses: actions/checkout@v2
 
-    - name: Sudo Compose
+    - name: Compose app with docker
       run: | 
-        echo "$sudopass" | sudo -S docker-compose -f /opt/projects/node-cicd-docker/node-cicd-docker/node-compose.yml up --detach
+        echo "$SUDO_PASS" | sudo -S docker-compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach

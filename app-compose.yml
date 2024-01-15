@@ -15,8 +15,8 @@ services:
     image : mongo
     container_name: mongodb-prod
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example  
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS} 
     volumes:
       - /opt/mongodb/:/data/db
     ports:
