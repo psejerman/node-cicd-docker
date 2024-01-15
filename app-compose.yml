@@ -2,7 +2,7 @@ version: '3.1'
 services:
   frontend:
     container_name: nodeapp-prod
-    build: 
+    build:
       context: .
       dockerfile: ./docker-frontend
     command: npm run start
@@ -14,9 +14,10 @@ services:
   backend:
     image : mongo
     container_name: mongodb-prod
+    command: [--auth]
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS} 
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
     volumes:
       - /opt/mongodb/:/data/db
     ports:
