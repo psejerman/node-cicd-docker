@@ -23,10 +23,10 @@ jobs:
         db_pass: ${{ secrets.DB_PASSWD }}
         db_user: ${{ secrets.DB_USERNAME }}
       run: |
-        echo MONGO_INITDB_ROOT_USERNAME=admin >> .env
-        echo MONGO_INITDB_ROOT_PASSWORD=password >> .env
+        echo MONGO_INITDB_ROOT_USERNAME=db_user >> .env
+        echo MONGO_INITDB_ROOT_PASSWORD=db_pass >> .env
         echo MONGO_INITDB_DATABASE=test >> .env
-        # echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach
+        echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach
 
         
        
