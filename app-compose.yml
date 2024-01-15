@@ -14,10 +14,14 @@ services:
   backend:
     image : mongo
     container_name: mongodb-prod
-    command: [--auth]
+    command: 
+      - --storageEngine
+      - wiredTiger
+      - --auth
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
     volumes:
       - /opt/mongodb/:/data/db
     ports:
