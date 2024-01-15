@@ -22,5 +22,5 @@ jobs:
 
     - name: Compose app with docker
       run: |
-        echo "$sudo_pass" | sudo -S docker-compose -e DB_USER="$db_user" -e DB_PASS="$db_pass" -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach
+        echo "$sudo_pass" | sudo -S docker compose -e DB_USER="$db_user" -e DB_PASS="$db_pass" -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach
        
