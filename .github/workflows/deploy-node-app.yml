@@ -7,9 +7,7 @@ on:
   #push:
   #  branches:
   #    - main
-   # echo "$sudo_pass" | sudo -S docker-compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach
-  #         export DB_PASS="$db_pass"
-     #   export DB_USER="$db_user"
+   # echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach
 
 
 jobs:
@@ -24,5 +22,6 @@ jobs:
         db_pass: ${{ secrets.DB_PASSWD }}
         db_user: ${{ secrets.DB_USERNAME }}
       run: |
-        echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach
+        echo "${db_user}":"$db_pass" > /opt/projects/cred
+        
        
