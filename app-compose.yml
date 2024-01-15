@@ -15,7 +15,7 @@ services:
       context: .
       dockerfile: ./docker-frontend
     depends_on:
-      - proxy
+      - reverse-proxy
       - backend
     command: npm run start
     volumes:
