@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:lts
 WORKDIR /var/app
 COPY app/package*.json ./
 RUN npm cache clean --force
