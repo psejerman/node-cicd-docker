@@ -25,7 +25,6 @@ jobs:
       run: |
         echo MONGO_INITDB_ROOT_USERNAME="$db_user" >> .env
         echo MONGO_INITDB_ROOT_PASSWORD="$db_pass" >> .env
-        echo MONGO_INITDB_DATABASE=my_db >> .env
         echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach
 
         
