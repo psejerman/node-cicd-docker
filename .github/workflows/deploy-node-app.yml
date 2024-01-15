@@ -1,8 +1,7 @@
 name: sample
 env:
   sudo_pass: ${{ secrets.SUDOPASS }}
-  db_pass: ${{ secrets.DB_PASSWD }}
-  db_user: ${{ secrets.DB_USERNAME }}
+  
 on:
   workflow_dispatch:
   #push:
@@ -21,6 +20,9 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Compose app with docker
+      env:
+        db_pass: ${{ secrets.DB_PASSWD }}
+        db_user: ${{ secrets.DB_USERNAME }}
       run: |
         echo "$sudo_pass" | sudo -S docker compose run -e DB_USER="$db_user" -e DB_PASS="$db_pass" -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach
        
