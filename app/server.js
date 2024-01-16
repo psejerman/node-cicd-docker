@@ -7,7 +7,9 @@ server.use(bodyParser.json());
 const productController = require('./controllers/productController');
 
 server.use('/api', productController);
-
+server.get('/', (req, res) => {
+  res.send('Hallo');
+});
 
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
