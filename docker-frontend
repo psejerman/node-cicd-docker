@@ -1,8 +1,8 @@
 FROM node:lts
-WORKDIR /var/app
-COPY app/package*.json ./
+WORKDIR /var/server
+COPY server/package*.json ./
 RUN npm cache clean --force
 RUN npm install 
-COPY ./app ./
+COPY ./server ./
 RUN chown -R node:node ./ 
 USER node
