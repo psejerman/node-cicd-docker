@@ -1,15 +1,14 @@
-
 const express = require('express');
+const bodyParser = require('body-parser');
 const server = express();
-const db =require("./db")
-const PORT = process.env.PORT || 3000;
-
-db()
-
-server.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
+const port = process.env.PORT || 3000;
+server.use(bodyParser.json());
 
 const productController = require('./controllers/productController');
 
 server.use('/api', productController);
+
+
+server.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});

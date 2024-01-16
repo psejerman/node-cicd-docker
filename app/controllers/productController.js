@@ -13,6 +13,7 @@ router.get('/products', async (req, res) => {
 });
 
 // Get a single product by ID
+/*
 router.get('/products/:id', async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
@@ -23,6 +24,14 @@ router.get('/products/:id', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
     }
+});
+*/
+router.post('/products/create', async (req, res) => {
+    Product.create(req.body).then((createdProduct) => {
+        console.log('Product created:', createdProduct);
+    }).catch((error) => {
+        console.error('Error creating product:', error);
+    });
 });
 
 module.exports = router;
