@@ -3,6 +3,9 @@ services:
   reverse-proxy:
     image: nginx:latest
     container_name: reverse-proxy
+    depends_on:
+      - frontend
+      - backend
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
@@ -15,14 +18,11 @@ services:
       context: .
       dockerfile: ./docker-frontend
     depends_on:
-      - reverse-proxy
       - backend
     command: npm run start
     volumes:
       - ./app:/app/
       - /app/node_modules
-    ports:
-      - "3000:3000"
   backend:
     image : mongo
     container_name: mongodb-prod
@@ -38,6 +38,4 @@ services:
     volumes:
       - /opt/mongodb/:/data/db
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-    ports:
-      - "27017:27017"
     restart: always
