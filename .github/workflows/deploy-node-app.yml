@@ -29,7 +29,7 @@ jobs:
         echo MONGO_INITDB_ROOT_USERNAME="$db_root_user" >> .env
         echo MONGO_INITDB_ROOT_PASSWORD="$db_root_pass" >> .env
         echo MONGO_INITDB_DATABASE="$db_name" >> .env
-        echo MONGODB_URL=mongodb://"$db_user":"$db_pass"@mongo-prod:27017 >> ./app/.env
+        echo MONGODB_URL=mongodb://"$db_user":"$db_pass"@mongodb-prod:27017 >> ./app/.env
         cat << EOF > mongo-init.js
           db.createUser({
             user: "$db_user",
