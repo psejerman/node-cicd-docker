@@ -5,10 +5,6 @@ const port = process.env.PORT || 3000;
 server.use(bodyParser.json());
 
 const Database = require('./db');
-server.get('/', (req, res) => {
-
-  res.send('Hallo');
-});
 
 const productRouter = require('./controllers/product.controller');
 server.use('/products', productRouter);

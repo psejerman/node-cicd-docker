@@ -3,7 +3,6 @@ const dotenv = require("dotenv");
 dotenv.config();
 const DbURL = process.env.MONGODB_URL
 
-
 class Database { // Singleton
     connection = mongoose.connection;
 
