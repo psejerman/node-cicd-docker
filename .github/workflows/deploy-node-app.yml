@@ -29,7 +29,7 @@ jobs:
         echo MONGO_INITDB_ROOT_USERNAME="$db_root_user" >> .env
         echo MONGO_INITDB_ROOT_PASSWORD="$db_root_pass" >> .env
         echo MONGO_INITDB_DATABASE="$db_name" >> .env
-        echo MONGODB_URL=mongodb://"$db_user":"$db_pass"@mongo-prod:27017 >> .env
+        echo MONGODB_URL=mongodb://"$db_user":"$db_pass"@mongodb-prod:27017/"$db_name" >> ./app/.env
         cat << EOF > mongo-init.js
           db.createUser({
             user: "$db_user",
@@ -40,7 +40,7 @@ jobs:
             }]
           });
         EOF
-        echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach
+        echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach --build
 
         
        
