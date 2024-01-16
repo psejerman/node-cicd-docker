@@ -40,6 +40,8 @@ jobs:
             }]
           });
         EOF
+        echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml down
+        echo "$sudo_pass" | sudo -S docker image rm node-cicd-docker-frontend
         echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach
 
         
