@@ -7,10 +7,6 @@ on:
   #push:
   #  branches:
   #    - main
-
-  # DEBUG: echo "$db_user":"$db_pass" > /opt/projects/cred
-
-
 jobs:
   deploy:
     runs-on: self-hosted

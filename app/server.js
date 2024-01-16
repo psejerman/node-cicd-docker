@@ -4,9 +4,8 @@ const server = express();
 const port = process.env.PORT || 3000;
 server.use(bodyParser.json());
 
-const productController = require('./controllers/productController');
+require('./db');
 
-server.use('/api', productController);
 server.get('/', (req, res) => {
   res.send('Hallo');
 });
