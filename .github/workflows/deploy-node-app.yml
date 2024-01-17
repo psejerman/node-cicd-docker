@@ -1,10 +1,13 @@
-name: sample
+name: Deploy to production
 env:
   sudo_pass: ${{ secrets.SUDOPASS }}
   
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 jobs:
@@ -37,6 +40,7 @@ jobs:
           });
         EOF
         echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach --build
+        echo "$sudo_pass" | sudo -S docker image prune -f
 
         
        
