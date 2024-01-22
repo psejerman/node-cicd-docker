@@ -1,5 +1,5 @@
 # TODOs
-- selfhosted runner as service
+- selfhosted runner as service (V)
 - fail2ban playbook (V)
 - server hardening playbook
 - dev deployment on github docker
