@@ -1,4 +1,4 @@
-name: Deploy to production
+name: Deploy to Development
 env:
   sudo_pass: ${{ secrets.SUDOPASS }}
   
