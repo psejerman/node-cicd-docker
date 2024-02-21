@@ -8,6 +8,8 @@ services:
       - backend
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - /etc/ssl/etc/ssl/nginx-reverse/nginx-selfsigned.crt /etc/ssl/certs/nginx-selfsigned.crt
+      - /etc/ssl/etc/ssl/nginx-reverse/nginx-selfsigned.key /etc/ssl/private/nginx-selfsigned.key
     ports:
       - "80:80"
       - "443:443"
