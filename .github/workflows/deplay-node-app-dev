@@ -1,0 +1,44 @@
+name: Deploy to production
+env:
+  sudo_pass: ${{ secrets.SUDOPASS }}
+  
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v2
+
+    - name: Compose app with docker
+      env:
+        db_root_pass: ${{ secrets.DB_ROOT_PASSWD }}
+        db_root_user: ${{ secrets.DB_ROOT_USERNAME }}
+        db_name: ${{ secrets.DB_NAME }}
+        db_pass: ${{ secrets.DB_PASSWD }}
+        db_user: ${{ secrets.DB_USERNAME }}
+      run: |
+        echo MONGO_INITDB_ROOT_USERNAME="$db_root_user" >> .env
+        echo MONGO_INITDB_ROOT_PASSWORD="$db_root_pass" >> .env
+        echo MONGO_INITDB_DATABASE="$db_name" >> .env
+        echo MONGODB_URL=mongodb://"$db_user":"$db_pass"@mongodb-dev:27017/"$db_name" >> ./app/.env
+        cat << EOF > mongo-init.js
+          db.createUser({
+            user: "$db_user",
+            pwd: "$db_pass",
+            roles: [{
+                  role: "dbOwner",
+                  db: "$db_name"
+            }]
+          });
+        EOF
+        echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose-dev.yml up --detach --build
+        echo "$sudo_pass" | sudo -S docker image prune -f
+
+        
+       
