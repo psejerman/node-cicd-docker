@@ -1,4 +1,4 @@
-name: Deploy to production
+name: Deploy to Production
 env:
   sudo_pass: ${{ secrets.SUDOPASS }}
   
@@ -37,7 +37,7 @@ jobs:
             }]
           });
         EOF
-        echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose.yml up --detach --build
+        echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose-prod.yml up --detach --build
         echo "$sudo_pass" | sudo -S docker image prune -f
 
         
