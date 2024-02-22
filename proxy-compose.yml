@@ -1,0 +1,14 @@
+version: '3.1'
+services:
+  reverse-proxy:
+    image: nginx:latest
+    container_name: reverse-proxy
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./api_json_errors.conf:/etc/nginx/api_json_errors.conf
+      - /etc/ssl/nginx-reverse/fullchain.pem:/etc/ssl/certs/cert.crt
+      - /etc/ssl/nginx-reverse/privkey.pem:/etc/ssl/private/private.key
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
