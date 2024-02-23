@@ -38,7 +38,7 @@ jobs:
           });
         EOF
         echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/app-compose-dev.yml up --detach --build
-        echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/proxy-compose.yml up --detach --build
+        echo "$sudo_pass" | sudo -S docker compose -f /opt/projects/node-cicd-docker/node-cicd-docker/proxy-compose.yml up --detach --build --no-recreate
         echo "$sudo_pass" | sudo -S docker image prune -f
 
         
